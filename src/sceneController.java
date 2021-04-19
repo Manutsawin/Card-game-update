@@ -18,6 +18,7 @@ public class sceneController {
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonOn = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonOff = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonPush = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewButtonTurnMark = new ArrayList<javafx.scene.image.ImageView>();
    
     private GameSesstion game = new GameSesstion();
 
@@ -51,6 +52,17 @@ public class sceneController {
     @FXML
     private Button next;
 
+    @FXML
+    private Pane turnPlayer;
+
+    @FXML
+    private Pane turnBot1;
+
+    @FXML
+    private Pane turnBot2;
+
+    @FXML
+    private Pane turnBot3;
 
     ComparableCard CardsOnField;
  
@@ -85,6 +97,7 @@ public class sceneController {
         imageviewButtonOn = SetpicMainPages.setpicOn();
         imageviewButtonOff = SetpicMainPages.setpicOff();
         imageviewButtonPush = SetpicMainPages.setpicPush();
+        imageviewButtonTurnMark = SetpicMainPages.setpicTurnMark();
 
         game.setSelectStage(game.getStageGame());
         for(int loop=0;loop<4;loop++)
@@ -367,6 +380,7 @@ public class sceneController {
             CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(0).getImageview());
             CardsOnField=playerHand.get(0);
             game.plusTurn(1);
+            turnBot1.getChildren().add(imageviewButtonTurnMark.get(0));
             // bot1Play();
             // bot2Play();
             // bot3Play();
@@ -379,6 +393,7 @@ public class sceneController {
             game.decreaseCom1hand(1);
             CardOnFieldComoneList.get(0).getChildren().add(Com1Hand.get(0).getImageview());
             CardsOnField=Com1Hand.get(0);
+            turnBot1.getChildren().add(imageviewButtonTurnMark.get(0));
             game.plusTurn(1);
            
             // bot2Play();
@@ -390,6 +405,7 @@ public class sceneController {
             game.decreaseCom2hand(1);
             CardOnFieldComtwoList.get(0).getChildren().add(Com2Hand.get(0).getImageview());
             CardsOnField=Com2Hand.get(0);
+            turnBot2.getChildren().add(imageviewButtonTurnMark.get(0));
             game.plusTurn(1);
             
             // bot3Play();
@@ -400,6 +416,7 @@ public class sceneController {
             game.decreaseCom3hand(1);
             CardOnFieldComthreeList.get(0).getChildren().add(Com3Hand.get(0).getImageview());
             CardsOnField=Com3Hand.get(0);
+            turnPlayer.getChildren().add(imageviewButtonTurnMark.get(0));
             game.setTurn(0);
            
             // game.setTurn(0);
@@ -504,12 +521,30 @@ public class sceneController {
             }
            
         }
+
         
         if(game.getTurn()==3){
             game.setTurn(0);
         }
         else{
             game.plusTurn(1);
+        }
+
+        if(game.getTurn()==0){
+            turnBot3.getChildren().clear();
+            turnPlayer.getChildren().add(imageviewButtonTurnMark.get(0));
+        }
+        else if(game.getTurn()==1){
+            turnPlayer.getChildren().clear();
+            turnBot1.getChildren().add(imageviewButtonTurnMark.get(0));
+        }
+        else if(game.getTurn()==2){
+            turnBot1.getChildren().clear();
+            turnBot2.getChildren().add(imageviewButtonTurnMark.get(0));
+        }
+        else if(game.getTurn()==3){
+            turnBot2.getChildren().clear();
+            turnBot3.getChildren().add(imageviewButtonTurnMark.get(0));
         }
         
         

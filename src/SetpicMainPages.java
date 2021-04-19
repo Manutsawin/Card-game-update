@@ -63,6 +63,16 @@ public class SetpicMainPages {
 
         return imageview;
     }
+
+    public static ArrayList<javafx.scene.image.ImageView> setpicTurnMark(){
+       
+        ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
+
+        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/turn/1.png"));
+        imageview.get(0).setFitWidth(70);
+        imageview.get(0).setFitHeight(70);
+        return imageview;
+    }
     
 
 }
