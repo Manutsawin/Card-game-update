@@ -400,7 +400,7 @@ public class sceneController {
             game.decreaseCom3hand(1);
             CardOnFieldComthreeList.get(0).getChildren().add(Com3Hand.get(0).getImageview());
             CardsOnField=Com3Hand.get(0);
-            game.plusTurn(1);
+            game.setTurn(0);
            
             // game.setTurn(0);
         }
@@ -412,9 +412,9 @@ public class sceneController {
     @FXML
     private void next(){
         
-            if(game.getTurn()!=0||game.getPlayerCanPlay()==false){
-                endTurn();
-            }
+        if(game.getTurn()!=0||game.getPlayerCanPlay()==false){
+            endTurn();
+        }
         
     }
 
@@ -422,6 +422,7 @@ public class sceneController {
     
     private void endTurn(){
         if(game.getTurn()==1){
+            
             fethButton();
             checkLimitCards();
             if(game.getCom1CanPlay()==true){
@@ -429,6 +430,7 @@ public class sceneController {
             }
         }
         else if(game.getTurn()==2){
+           
             fethButton();
             checkLimitCards();
             System.out.println(CardsOnField);
@@ -437,6 +439,7 @@ public class sceneController {
             }
         }
         else if(game.getTurn()==3){
+           
             fethButton();
             checkLimitCards();
             System.out.println(CardsOnField);
