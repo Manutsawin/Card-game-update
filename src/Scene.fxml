@@ -181,7 +181,6 @@
       </HBox>
       <Button fx:id="enter" layoutX="959.0" layoutY="36.0" mnemonicParsing="false" onAction="#playerEnterCard" text="ลงการ์ด" />
       <Button fx:id="skip" layoutX="959.0" layoutY="96.0" mnemonicParsing="false" onAction="#playerSkip" text="ข้าม" />
-      <Button fx:id="next" layoutX="959.0" layoutY="159.0" mnemonicParsing="false"  text="ต่อไป" />
      
    </children>
 </AnchorPane>

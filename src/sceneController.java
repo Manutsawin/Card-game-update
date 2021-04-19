@@ -48,9 +48,6 @@ public class sceneController {
     @FXML
     private Button skip;
 
-    @FXML
-    private Button next;
-
     ComparableCard CardsOnField;
  
     @FXML
@@ -244,7 +241,7 @@ public class sceneController {
         int value = Integer.parseInt(((Pane)event.getSource()).getId());
 
 
-        if(game.getStatusButton(value))
+        if(game.getStatusButton(value)||game.getStartStage()==true)
         {
             BList.get(game.getSelectStage()).getChildren().clear();
             BList.get(game.getSelectStage()).getChildren().add(imageviewButtonOn.get(game.getSelectStage()));
@@ -474,6 +471,8 @@ public class sceneController {
 
     private void bot1Play(){
         
+        System.out.println("turn Bot 1");
+
         if(game.getSkip()==3&&game.getCom1CanPlay()==true){
             for(int loop=0;loop<4;loop++){
                 CardOnFieldPlayerList.get(loop).getChildren().clear();
@@ -544,6 +543,8 @@ public class sceneController {
     }
 
     private void bot2Play(){
+
+        System.out.println("turn Bot 2");
        
         if(game.getSkip()==3&&game.getCom2CanPlay()==true){
             for(int loop=0;loop<4;loop++){
@@ -615,6 +616,8 @@ public class sceneController {
     }
 
     private void bot3Play(){
+
+        System.out.println("turn Bot 3" );
             
             if(game.getSkip()==3&&game.getCom3CanPlay()==true){
                 for(int loop=0;loop<4;loop++){

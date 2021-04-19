@@ -6,6 +6,8 @@ public class Bot {
         int[] indexCard={0,0,0,0,4};
             
             if(game.getStartStage()==true){
+                
+                game.setSkip(0);
                 for(int loop=0;loop<4;loop++)
                 {
                     game.setStatusButtontrue(loop);
