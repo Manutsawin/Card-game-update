@@ -28,6 +28,7 @@ public class GameSesstion {
     private ComparableCard []CardsOnFieldComTwo={new ComparableCard(),new ComparableCard(),new ComparableCard(),new ComparableCard()};
     private ComparableCard []CardsOnFieldComThree={new ComparableCard(),new ComparableCard(),new ComparableCard(),new ComparableCard()};
     private int turn ;
+    private Boolean isfirstEnter;
 
     public GameSesstion() {
         this.selectStage = 0;
@@ -40,6 +41,7 @@ public class GameSesstion {
         this.numCom3hand = 13;
         this.skip = 0 ;
         this.turn = 0;
+        this.isfirstEnter = true ;
     }
 
     public Boolean getStatusButton(int index) {
@@ -311,6 +313,15 @@ public class GameSesstion {
         this.turn += num;
     }
 
+    public Boolean getIsfirstEnter() {
+        return isfirstEnter;
+    }
+
+    public void setIsfirstEnter(Boolean isfirstEnter) {
+        this.isfirstEnter = isfirstEnter;
+    }
+
+    
     
 
     
