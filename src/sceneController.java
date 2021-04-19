@@ -406,6 +406,7 @@ public class sceneController {
         checkLimitCards();
         
         if(game.getSkip()==3&&game.getPlayerCanPlay()==true){
+            
             for(int loop=0;loop<4;loop++){
                 CardOnFieldPlayerList.get(loop).getChildren().clear();
                 CardOnFieldComoneList.get(loop).getChildren().clear();
@@ -427,6 +428,7 @@ public class sceneController {
             game.setCom2CanPlay(true);
             game.setCom3CanPlay(true);
             game.setPlayerCanPlay(true);
+            CardsOnField.setValue(0);
            
 
             for(int loop=0;loop<4;loop++)
@@ -450,7 +452,7 @@ public class sceneController {
                 BList.get(3).getChildren().add(imageviewButtonOff.get(3));
                 game.setStatusButtonfalse(3);
             } 
-            CardsOnField.setValue(0);
+            
             game.setStartStage(false);
         }
 
