@@ -429,6 +429,7 @@ public class sceneController {
             game.setCom3CanPlay(true);
             game.setPlayerCanPlay(true);
             CardsOnField.setValue(0);
+            game.setStartStage(false);
            
 
             for(int loop=0;loop<4;loop++)
@@ -453,7 +454,7 @@ public class sceneController {
                 game.setStatusButtonfalse(3);
             } 
             
-            game.setStartStage(false);
+           
         }
 
         if(game.getPlayerCanPlay()==false){
