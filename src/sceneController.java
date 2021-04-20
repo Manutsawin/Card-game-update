@@ -184,6 +184,19 @@ public class sceneController {
 
     }
 
+    private void refeshBT(){
+        for(int loop=0;loop<4;loop++){
+            if(game.getStatusButton(loop)==true){
+                BList.get(loop).getChildren().clear();
+                BList.get(loop).getChildren().add(imageviewButtonOn.get(loop));
+            }
+            else{
+                BList.get(loop).getChildren().clear();
+                BList.get(loop).getChildren().add(imageviewButtonOff.get(loop));
+            }
+        }
+    }
+
     private void setNumberHands(){
         for(int loop=13;loop>=0;loop--){
             if(game.getNumPlayerhand()==loop){
@@ -603,6 +616,30 @@ public class sceneController {
         }
         
         setNumberHands();
+        try {
+            refeshBT();
+        }
+        catch (Exception ex) {
+            System.out.println("refeshBT()");
+            
+        }
+
+        if(game.getTurn()==0&&game.getPlayerCanPlay()==false){
+            next();
+        }
+
+        if(game.getTurn()==1&&game.getCom1CanPlay()==false){
+            next();
+        }
+
+        if(game.getTurn()==2&&game.getCom2CanPlay()==false){
+            next();
+        }
+
+        if(game.getTurn()==3&&game.getCom3CanPlay()==false){
+            next();
+        }
+
         if(game.getNumPlayerhand()==0){
             playerSkip();
         }
@@ -618,6 +655,7 @@ public class sceneController {
         if(game.getTurn()==3&&game.getNumCom3hand()==0){
             next();
         }
+
 
     }
 
