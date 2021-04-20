@@ -393,7 +393,7 @@ public class sceneController {
             game.decreaseCom1hand(1);
             CardOnFieldComoneList.get(0).getChildren().add(Com1Hand.get(0).getImageview());
             CardsOnField=Com1Hand.get(0);
-            turnBot1.getChildren().add(imageviewButtonTurnMark.get(0));
+            turnBot2.getChildren().add(imageviewButtonTurnMark.get(0));
             game.plusTurn(1);
            
             // bot2Play();
@@ -405,7 +405,7 @@ public class sceneController {
             game.decreaseCom2hand(1);
             CardOnFieldComtwoList.get(0).getChildren().add(Com2Hand.get(0).getImageview());
             CardsOnField=Com2Hand.get(0);
-            turnBot2.getChildren().add(imageviewButtonTurnMark.get(0));
+            turnBot3.getChildren().add(imageviewButtonTurnMark.get(0));
             game.plusTurn(1);
             
             // bot3Play();
