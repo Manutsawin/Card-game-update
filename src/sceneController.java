@@ -607,6 +607,18 @@ public class sceneController {
             playerSkip();
         }
 
+        if(game.getTurn()==1&&game.getNumCom1hand()==0){
+            next();
+        }
+
+        if(game.getTurn()==2&&game.getNumCom2hand()==0){
+            next();
+        }
+
+        if(game.getTurn()==3&&game.getNumCom3hand()==0){
+            next();
+        }
+
     }
 
     @FXML
