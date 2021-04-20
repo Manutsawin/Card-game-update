@@ -19,6 +19,10 @@ public class sceneController {
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonOff = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonPush = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewButtonTurnMark = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands0 = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands1 = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands2 = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands3 = new ArrayList<javafx.scene.image.ImageView>();
    
     private GameSesstion game = new GameSesstion();
 
@@ -44,6 +48,9 @@ public class sceneController {
     private ArrayList<Pane> CardOnFieldComoneList ;
 
     @FXML
+    private ArrayList<Pane> cardOnHandsList ;
+
+    @FXML
     private Button buttom;
 
     @FXML
@@ -63,6 +70,18 @@ public class sceneController {
 
     @FXML
     private Pane turnBot3;
+
+    // @FXML
+    // private Pane cardOnHands;
+
+    // @FXML
+    // private Pane cardOnHands1;
+
+    // @FXML
+    // private Pane cardOnHands3;
+
+    // @FXML
+    // private Pane cardOnHands2;
 
     ComparableCard CardsOnField;
  
@@ -98,6 +117,10 @@ public class sceneController {
         imageviewButtonOff = SetpicMainPages.setpicOff();
         imageviewButtonPush = SetpicMainPages.setpicPush();
         imageviewButtonTurnMark = SetpicMainPages.setpicTurnMark();
+        imageviewNumberHands0 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands1 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands2 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands3 = SetpicMainPages.setpicNumberHands();
 
         game.setSelectStage(game.getStageGame());
         for(int loop=0;loop<4;loop++)
@@ -110,6 +133,7 @@ public class sceneController {
         checkLimitCards();
         game.setSelectCards(0);
         System.out.println(time.getTimecount());  
+        setNumberHands();
         firstPlay();  
     }
 
@@ -160,7 +184,30 @@ public class sceneController {
 
     }
 
-    public void checkLimitCards(){ 
+    private void setNumberHands(){
+        for(int loop=13;loop>=0;loop--){
+            if(game.getNumPlayerhand()==loop){
+                cardOnHandsList.get(0).getChildren().clear();
+                cardOnHandsList.get(0).getChildren().add(imageviewNumberHands0.get(loop));
+            }
+            if(game.getNumCom1hand()==loop){
+                cardOnHandsList.get(1).getChildren().clear();
+                cardOnHandsList.get(1).getChildren().add(imageviewNumberHands1.get(loop));
+            }
+            if(game.getNumCom2hand()==loop){
+                cardOnHandsList.get(2).getChildren().clear();
+                cardOnHandsList.get(2).getChildren().add(imageviewNumberHands2.get(loop));
+            }
+            if(game.getNumCom3hand()==loop){
+                cardOnHandsList.get(3).getChildren().clear();
+                cardOnHandsList.get(3).getChildren().add(imageviewNumberHands3.get(loop));
+            }
+        }
+        
+        
+    }
+
+    private void checkLimitCards(){ 
         game.setLimitSelectCards(game.getStageGame()+1);
     }
 
@@ -529,6 +576,8 @@ public class sceneController {
         }
 
         
+
+        
         if(game.getTurn()==3){
             game.setTurn(0);
         }
@@ -553,7 +602,7 @@ public class sceneController {
             turnBot3.getChildren().add(imageviewButtonTurnMark.get(0));
         }
         
-        
+        setNumberHands();
 
     }
 

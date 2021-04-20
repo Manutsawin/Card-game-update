@@ -10,8 +10,8 @@
    <children>
       <Button fx:id="buttom" layoutX="489.0" layoutY="36.0" mnemonicParsing="false" onAction="#setUp" text="click" />
       <Pane fx:id="turnPlayer" layoutX="550.0" layoutY="414.0" prefHeight="70.0" prefWidth="70.0" rotate="90.0" />
-      <Pane fx:id="turnBot1" layoutX="42.0" layoutY="306.0" prefHeight="70.0" prefWidth="70.0" rotate="180"/>
-      <Pane fx:id="turnBot2" layoutX="570.0" layoutY="26.0" prefHeight="70.0" prefWidth="70.0" rotate="270"/>
+      <Pane fx:id="turnBot1" layoutX="42.0" layoutY="306.0" prefHeight="70.0" prefWidth="70.0" rotate="180" />
+      <Pane fx:id="turnBot2" layoutX="570.0" layoutY="26.0" prefHeight="70.0" prefWidth="70.0" rotate="270" />
       <Pane fx:id="turnBot3" layoutX="950.0" layoutY="306.0" prefHeight="70.0" prefWidth="70.0" />
       
       <HBox layoutX="179" layoutY="249.0" prefHeight="150.0" prefWidth="280.0" rotate="90.0">
@@ -185,7 +185,22 @@
       </HBox>
       <Button fx:id="enter" layoutX="959.0" layoutY="36.0" mnemonicParsing="false" onAction="#playerEnterCard" text="ลงการ์ด" />
       <Button fx:id="skip" layoutX="959.0" layoutY="96.0" mnemonicParsing="false" onAction="#playerSkip" text="ข้าม" />
-       <Button fx:id="next" layoutX="959.0" layoutY="200.0" mnemonicParsing="false" onAction="#next" text="ถัดไป" />
-     
+      <Button fx:id="next" layoutX="959.0" layoutY="200.0" mnemonicParsing="false" onAction="#next" text="ถัดไป" />
+      
+      
+      <Pane fx:id="cardOnHands0" layoutX="475.0" layoutY="470.0" prefHeight="70.0" prefWidth="70.0" />
+      <Pane fx:id="cardOnHands1" layoutX="27.0" layoutY="235.0" prefHeight="70.0" prefWidth="70.0" />
+      <Pane fx:id="cardOnHands2" layoutX="404.0" layoutY="26.0" prefHeight="70.0" prefWidth="70.0" />
+      <Pane fx:id="cardOnHands3" layoutX="942.0" layoutY="235.0" prefHeight="70.0" prefWidth="70.0" />
+
+      <fx:define>
+            <ArrayList fx:id="cardOnHandsList">
+               <fx:reference source="cardOnHands0" />
+               <fx:reference source="cardOnHands1" />
+               <fx:reference source="cardOnHands2" />
+               <fx:reference source="cardOnHands3" />
+            </ArrayList>
+      </fx:define>
+
    </children>
 </AnchorPane>
