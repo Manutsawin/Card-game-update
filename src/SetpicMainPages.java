@@ -68,7 +68,7 @@ public class SetpicMainPages {
        
         ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
 
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/turn/1.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/turn/1.png"));
         imageview.get(0).setFitWidth(70);
         imageview.get(0).setFitHeight(70);
         return imageview;
