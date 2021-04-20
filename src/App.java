@@ -13,7 +13,7 @@ public class App extends Application{
         launch(args);
     }
 
-    @Override
+    @Override 
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("MenuScene.fxml"));

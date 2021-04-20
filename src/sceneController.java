@@ -493,29 +493,35 @@ public class sceneController {
                 game.setPlayerCanPlay(true);
                 CardsOnField.setValue(0);
                 game.setStartStage(false);
-            
-
-                for(int loop=0;loop<4;loop++)
-                {
-                    game.setStatusButtontrue(loop);
-                    BList.get(loop).getChildren().add(imageviewButtonOn.get(loop));
+                
+                try {
+                   
+                    for(int loop=0;loop<4;loop++)
+                    {
+                        game.setStatusButtontrue(loop);
+                        BList.get(loop).getChildren().add(imageviewButtonOn.get(loop));
+                    }
+                    if(!ComparableCard.twoCardsOnHand(playerHand)){
+                        BList.get(1).getChildren().clear();
+                        BList.get(1).getChildren().add(imageviewButtonOff.get(1));
+                        game.setStatusButtonfalse(1);
+                    } 
+                    if(!ComparableCard.threeCardsOnHand(playerHand)){
+                        BList.get(2).getChildren().clear();
+                        BList.get(2).getChildren().add(imageviewButtonOff.get(2));
+                        game.setStatusButtonfalse(2);
+                    }
+                    if(!ComparableCard.fourCardsOnHand(playerHand)){
+                        BList.get(3).getChildren().clear();
+                        BList.get(3).getChildren().add(imageviewButtonOff.get(3));
+                        game.setStatusButtonfalse(3);
+                    } 
+                }
+                catch (Exception ex) {
+                    System.out.println("set and claer pic on methods endturn");
+                    
                 }
 
-                if(!ComparableCard.twoCardsOnHand(playerHand)){
-                    BList.get(1).getChildren().clear();
-                    BList.get(1).getChildren().add(imageviewButtonOff.get(1));
-                    game.setStatusButtonfalse(1);
-                } 
-                if(!ComparableCard.threeCardsOnHand(playerHand)){
-                    BList.get(2).getChildren().clear();
-                    BList.get(2).getChildren().add(imageviewButtonOff.get(2));
-                    game.setStatusButtonfalse(2);
-                }
-                if(!ComparableCard.fourCardsOnHand(playerHand)){
-                    BList.get(3).getChildren().clear();
-                    BList.get(3).getChildren().add(imageviewButtonOff.get(3));
-                    game.setStatusButtonfalse(3);
-                } 
                 
             
             }
