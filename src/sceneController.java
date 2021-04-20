@@ -603,11 +603,14 @@ public class sceneController {
         }
         
         setNumberHands();
+        if(game.getNumPlayerhand()==0){
+            playerSkip();
+        }
 
     }
 
     @FXML
-    private void playerSkip(ActionEvent event){
+    private void playerSkip(){
         if(game.getTurn()==0){
             game.plusSkip(1);
             System.out.println("skip : "+game.getSkip());
