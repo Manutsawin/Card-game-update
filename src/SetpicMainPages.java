@@ -5,16 +5,16 @@ public class SetpicMainPages {
        
         ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
 
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/1.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/1.png"));
         imageview.get(0).setFitWidth(70);
         imageview.get(0).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/1.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/1.png"));
         imageview.get(1).setFitWidth(70);
         imageview.get(1).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/1.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/1.png"));
         imageview.get(2).setFitWidth(70);
         imageview.get(2).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/1.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/1.png"));
         imageview.get(3).setFitWidth(70);
         imageview.get(3).setFitHeight(30);
 
@@ -26,16 +26,16 @@ public class SetpicMainPages {
        
         ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
 
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/2.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/2.png"));
         imageview.get(0).setFitWidth(70);
         imageview.get(0).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/2.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/2.png"));
         imageview.get(1).setFitWidth(70);
         imageview.get(1).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/2.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/2.png"));
         imageview.get(2).setFitWidth(70);
         imageview.get(2).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/2.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/2.png"));
         imageview.get(3).setFitWidth(70);
         imageview.get(3).setFitHeight(30);
 
@@ -47,16 +47,16 @@ public class SetpicMainPages {
        
         ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
 
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/3.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/3.png"));
         imageview.get(0).setFitWidth(70);
         imageview.get(0).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/3.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/3.png"));
         imageview.get(1).setFitWidth(70);
         imageview.get(1).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/3.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/3.png"));
         imageview.get(2).setFitWidth(70);
         imageview.get(2).setFitHeight(30);
-        imageview.add(new javafx.scene.image.ImageView("file:///E:/Pj-OOP/Slave-game/pic/Button/3.png"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/Button/3.png"));
         imageview.get(3).setFitWidth(70);
         imageview.get(3).setFitHeight(30);
 
