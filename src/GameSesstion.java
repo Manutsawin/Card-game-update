@@ -29,6 +29,9 @@ public class GameSesstion {
     private ComparableCard []CardsOnFieldComThree={new ComparableCard(),new ComparableCard(),new ComparableCard(),new ComparableCard()};
     private int turn ;
     private Boolean isfirstEnter;
+    private int [] victory={-1,-1,-1,-1};
+    private int  orderVictory=0;
+    private Boolean exchangeCards ;
 
     public GameSesstion() {
         this.selectStage = 0;
@@ -42,6 +45,7 @@ public class GameSesstion {
         this.skip = 0 ;
         this.turn = 0;
         this.isfirstEnter = true ;
+        this.exchangeCards = true;
     }
 
     public Boolean getStatusButton(int index) {
@@ -319,6 +323,34 @@ public class GameSesstion {
 
     public void setIsfirstEnter(Boolean isfirstEnter) {
         this.isfirstEnter = isfirstEnter;
+    }
+
+    public int getVictory(int index) {
+        return victory[index];
+    }
+
+    public void setVictory(int index,int num) {
+        this.victory[index] = num;
+    }
+
+    public int getOrderVictory() {
+        return orderVictory;
+    }
+    
+    public void plusOrderVictory(int num) {
+        this.orderVictory += num;
+    }
+
+    public void setOrderVictory(int orderVictory) {
+        this.orderVictory = orderVictory;
+    }
+
+    public Boolean getExchangeCards() {
+        return exchangeCards;
+    }
+
+    public void setExchangeCards(Boolean exchangeCards) {
+        this.exchangeCards = exchangeCards;
     }
 
     

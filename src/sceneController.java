@@ -58,6 +58,9 @@ public class sceneController {
 
     @FXML
     private Button next;
+    
+    @FXML
+    private Button exBT;
 
     @FXML
     private Pane turnPlayer;
@@ -91,11 +94,12 @@ public class sceneController {
     private int [] indexCom1,indexCom2,indexCom3;
 
     private TimeCount time = new TimeCount();
-
+    
 
     @FXML
-    private void setUp(ActionEvent event){
+    public void setUp(){
        
+        
         RandomHand rand = new RandomHand();
         this.playerHand = rand.getPlayerHand();
         this.Com1Hand = rand.getCom1Hand();
@@ -136,6 +140,8 @@ public class sceneController {
         setNumberHands();
         firstPlay();  
     }
+
+   
 
     private void fethButton(){
         if(!ComparableCard.twoCardsOnHand(playerHand)){
@@ -427,6 +433,16 @@ public class sceneController {
     }
 
     private void firstPlay(){
+        try {
+            turnPlayer.getChildren().clear();
+            turnBot1.getChildren().clear();
+            turnBot2.getChildren().clear();
+            turnBot3.getChildren().clear();
+        }
+        catch (Exception ex) {
+            System.out.println("clear pic turn on firstPlay");
+            
+        }
         CardOnFieldComthreeList.get(0).getChildren().clear();
         CardOnFieldComtwoList.get(0).getChildren().clear();
         CardOnFieldComoneList.get(0).getChildren().clear();
@@ -559,6 +575,9 @@ public class sceneController {
                     for(int loop=0;loop<4;loop++)
                     {
                         game.setStatusButtontrue(loop);
+                    }
+                    for(int loop=0;loop<4;loop++)
+                    {
                         BList.get(loop).getChildren().add(imageviewButtonOn.get(loop));
                     }
                     if(!ComparableCard.twoCardsOnHand(playerHand)){
@@ -589,7 +608,7 @@ public class sceneController {
         }
 
         
-
+        
         
         if(game.getTurn()==3){
             game.setTurn(0);
@@ -597,6 +616,8 @@ public class sceneController {
         else{
             game.plusTurn(1);
         }
+
+        checkVictory();
 
         if(game.getTurn()==0){
             turnBot3.getChildren().clear();
@@ -894,10 +915,149 @@ public class sceneController {
 
     }
 
-    
+    private void checkVictory(){
+        if(game.getNumPlayerhand()==0)
+        {   
+            int count = 0;
+            for(int loop=0;loop<4;loop++){
+                if(game.getVictory(loop)==0){
+                    count++;
+                }
+            }
+            if(count==0){
+                game.setVictory(game.getOrderVictory(),0);
+                game.plusOrderVictory(1);
+            }
+            
+        }
 
-    
+        if(game.getNumCom1hand()==0)
+        {   
+            int count = 0;
+            for(int loop=0;loop<4;loop++){
+                if(game.getVictory(loop)==1){
+                    count++;
+                }
+            }
+            if(count==0){
+                game.setVictory(game.getOrderVictory(),1);
+                game.plusOrderVictory(1);
+            }
+            
+        }
 
+        if(game.getNumCom2hand()==0)
+        {   
+            int count = 0;
+            for(int loop=0;loop<4;loop++){
+                if(game.getVictory(loop)==2){
+                    count++;
+                }
+            }
+            if(count==0){
+                game.setVictory(game.getOrderVictory(),2);
+                game.plusOrderVictory(1);
+            }
+            
+        }
+
+        if(game.getNumCom3hand()==0)
+        {   
+            int count = 0;
+            for(int loop=0;loop<4;loop++){
+                if(game.getVictory(loop)==3){
+                    count++;
+                }
+            }
+            if(count==0){
+                game.setVictory(game.getOrderVictory(),3);
+                game.plusOrderVictory(1);
+            }
+            
+        }
+
+        if(game.getOrderVictory()==4){
+            nextRound();
+        }
+        
+    }
+
+    private void nextRound(){
+        RandomHand rand = new RandomHand();
+        this.playerHand = rand.getPlayerHand();
+        this.Com1Hand = rand.getCom1Hand();
+        this.Com2Hand = rand.getCom2Hand();
+        this.Com3Hand = rand.getCom3Hand();
+        for(int loop=0;loop<13;loop++)
+        {
+            paneTopList.get(loop).getChildren().clear();
+            paneList.get(loop).getChildren().add(playerHand.get(loop).imageview);
+        }
+        
+        game = new GameSesstion();
+
+        imageviewButtonOn = SetpicMainPages.setpicOn();
+        imageviewButtonOff = SetpicMainPages.setpicOff();
+        imageviewButtonPush = SetpicMainPages.setpicPush();
+        imageviewButtonTurnMark = SetpicMainPages.setpicTurnMark();
+        imageviewNumberHands0 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands1 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands2 = SetpicMainPages.setpicNumberHands();
+        imageviewNumberHands3 = SetpicMainPages.setpicNumberHands();
+
+        game.setSelectStage(game.getStageGame());
+        for(int loop=0;loop<4;loop++)
+        {
+            BList.get(loop).getChildren().add(imageviewButtonOn.get(loop));
+        }
+        BList.get(game.getSelectStage()).getChildren().clear();
+        BList.get(game.getSelectStage()).getChildren().add(imageviewButtonPush.get(game.getSelectStage()));
+        fethButton();
+        checkLimitCards();
+        game.setSelectCards(0);
+        System.out.println(time.getTimecount());  
+        setNumberHands();
+        for(int loop=0;loop<4;loop++){
+            CardOnFieldPlayerList.get(loop).getChildren().clear();
+            CardOnFieldComoneList.get(loop).getChildren().clear();
+            CardOnFieldComtwoList.get(loop).getChildren().clear();
+            CardOnFieldComthreeList.get(loop).getChildren().clear();
+        }
+        try {
+            turnPlayer.getChildren().clear();
+            turnBot1.getChildren().clear();
+            turnBot2.getChildren().clear();
+            turnBot3.getChildren().clear();
+        }
+        catch (Exception ex) {
+            System.out.println("clear pic turn on nextRound");
+            
+        }
+    }
+
+    @FXML
+    private void exchange(){
+        
+        playerHand = ComparableCard.tabulateListCards(playerHand, 3, 4, Com1Hand.get(11), Com1Hand.get(12));
+        System.out.println(playerHand.size());
+        System.out.println("card1 : "+Com1Hand.get(11));
+        System.out.println("card2 : "+Com1Hand.get(12));
+        try {
+            for(int loop=0;loop<13;loop++)
+            {
+                paneList.get(loop).getChildren().clear();
+                paneList.get(loop).getChildren().add(playerHand.get(loop).imageview);
+                System.out.println(playerHand.get(loop));
+            }
+        }
+        catch (Exception ex) {
+            System.out.println("exchange");
+            
+        }
+        
+        
+    }
+    
    
 
 }

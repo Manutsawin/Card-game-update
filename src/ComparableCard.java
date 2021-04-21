@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class ComparableCard extends Card implements CheckCardValue{
 
     public ComparableCard(String suit, String name, int value, String cardImage) {
@@ -248,8 +249,55 @@ public class ComparableCard extends Card implements CheckCardValue{
 
         return 0 ;
     }
-    
 
+
+    public static ArrayList<ComparableCard> tabulateListCards(ArrayList<ComparableCard> list,int index1,int index2,ComparableCard card1,ComparableCard card2){
+        ArrayList<ComparableCard> listNew = new ArrayList<ComparableCard>();
+        for(int loop=0;loop<13;loop++){
+            if(loop!=index1&&loop!=index2){
+                listNew.add(list.get(loop));
+            }
+            
+        }
+        System.out.println("listnew : "+listNew.size());
+        for(int loop=0;loop<11;loop++){
+            if(card1.checkValue1(listNew.get(loop))==-1||loop==10){
+                listNew.add(list.get(loop));
+                for(int loop2=10;loop2>=loop;loop2--){
+                    listNew.set(loop2+1,listNew.get(loop2));
+                }
+                if(loop==10){
+                    listNew.set(loop+1,card1);
+                }
+                else{
+                    listNew.set(loop,card1);
+                }
+                
+                break;
+            }
+        }
+        listNew.add(list.get(0));
+        for(int loop=0;loop<12;loop++){
+            if(card2.checkValue1(listNew.get(loop))==-1||loop==11){
+               
+                for(int loop2=11;loop2>=loop;loop2--){
+                    listNew.set(loop2+1,listNew.get(loop2));
+                }
+                if(loop==11){
+                    listNew.set(loop+1,card2);
+                }
+                else{
+                    listNew.set(loop,card2);
+                }
+                
+                break;
+            }
+        }
+        return listNew;
+    }  
+    
+    
+    
     
 
 

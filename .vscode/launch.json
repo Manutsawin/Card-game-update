@@ -11,13 +11,13 @@
         //     "mainClass": "App",
         //     //"projectName": "Card-game-update_839cda75"
         // },
-        {
-            "type": "java",
-            "name": "Launch Card",
-            "request": "launch",
-            "mainClass": "Card",
-            "projectName": "Slave-game_be92cc60"
-        },
+        // {
+        //     "type": "java",
+        //     "name": "Launch Card",
+        //     "request": "launch",
+        //     "mainClass": "Card",
+        //     "projectName": "Slave-game_be92cc60"
+        // },
         {
             "type": "java",
             "name": "Launch Current File",
