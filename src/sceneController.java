@@ -94,6 +94,8 @@ public class sceneController {
     private int [] indexCom1,indexCom2,indexCom3;
 
     private TimeCount time = new TimeCount();
+
+    private int[] victory = {0,0,0,0};
     
 
     @FXML
@@ -242,7 +244,27 @@ public class sceneController {
         System.out.println(CardsOnField);
         System.out.println("Select : "+game.getSelectCards()+" Limit : "+game.getLimitSelectCards());
         System.out.println("Player : "+game.getNumPlayerhand()+"||"+" COM1 : "+game.getNumCom1hand()+"||"+" COM2 : "+game.getNumCom2hand()+"||"+" COM3 : "+game.getNumCom3hand());
-       if(game.getSelectCards()<game.getLimitSelectCards()&&playerHand.get(value).getStatus()==true) {
+        System.out.println("Exchange : "+game.getExchangeCards());
+        if(game.getExchangeCards()){
+
+            if(game.getVictory(0)==0){
+                if(game.getSelectCards()<2){
+                    paneList.get(value).getChildren().clear();
+                    paneTopList.get(value).getChildren().add(playerHand.get(value).imageview);
+                    game.setPlayerSelectIndex(game.getSelectCards(),value);
+                    game.plusSelectCards();
+                }
+            }
+            else if(game.getVictory(1)==0){
+                if(game.getSelectCards()<1){
+                    paneList.get(value).getChildren().clear();
+                    paneTopList.get(value).getChildren().add(playerHand.get(value).imageview);
+                    game.setPlayerSelectIndex(game.getSelectCards(),value);
+                    game.plusSelectCards();
+                }
+            }
+        }
+        else if(game.getSelectCards()<game.getLimitSelectCards()&&playerHand.get(value).getStatus()==true) {
             if(game.getSelectStage()==0)
             {
                 if(playerHand.get(value).checkValue1(CardsOnField)==1)
@@ -315,6 +337,8 @@ public class sceneController {
     @FXML
     private void selectStange(MouseEvent event)
     {
+        
+        
         for(int loop=0;loop<13;loop++){
             if(playerHand.get(loop).getStatus()==true)
             {
@@ -346,7 +370,10 @@ public class sceneController {
     @FXML
     private void playerEnterCard(ActionEvent event){
 
-        if(game.getTurn()==0){
+        if(game.getExchangeCards()){
+            
+        }
+        else if(game.getTurn()==0){
             game.setStageGame(game.getSelectStage());
 
             if(game.getStageGame()==0){
@@ -433,6 +460,7 @@ public class sceneController {
     }
 
     private void firstPlay(){
+        game.setExchangeCards(false);
         try {
             turnPlayer.getChildren().clear();
             turnBot1.getChildren().clear();
@@ -505,7 +533,7 @@ public class sceneController {
     @FXML
     private void next(){
         
-        if(game.getTurn()!=0||game.getPlayerCanPlay()==false){
+        if((game.getTurn()!=0||game.getPlayerCanPlay()==false)&&game.getExchangeCards()==false){
             endTurn();
         }
         
@@ -983,6 +1011,14 @@ public class sceneController {
     }
 
     private void nextRound(){
+
+        victory[0]=game.getVictory(0);
+        victory[1]=game.getVictory(1);
+        victory[2]=game.getVictory(2);
+        victory[3]=game.getVictory(3);
+
+
+        
         RandomHand rand = new RandomHand();
         this.playerHand = rand.getPlayerHand();
         this.Com1Hand = rand.getCom1Hand();
@@ -995,6 +1031,11 @@ public class sceneController {
         }
         
         game = new GameSesstion();
+
+        game.setVictory(0, victory[0]);
+        game.setVictory(1, victory[1]);
+        game.setVictory(2, victory[2]);
+        game.setVictory(3, victory[3]);
 
         imageviewButtonOn = SetpicMainPages.setpicOn();
         imageviewButtonOff = SetpicMainPages.setpicOff();
@@ -1037,25 +1078,159 @@ public class sceneController {
 
     @FXML
     private void exchange(){
-        
-        playerHand = ComparableCard.tabulateListCards(playerHand, 3, 4, Com1Hand.get(11), Com1Hand.get(12));
-        System.out.println(playerHand.size());
-        System.out.println("card1 : "+Com1Hand.get(11));
-        System.out.println("card2 : "+Com1Hand.get(12));
-        try {
-            for(int loop=0;loop<13;loop++)
-            {
-                paneList.get(loop).getChildren().clear();
-                paneList.get(loop).getChildren().add(playerHand.get(loop).imageview);
-                System.out.println(playerHand.get(loop));
+        if(game.getExchangeCards()==true){
+            game.setSelectCards(0);
+            if(game.getVictory(0)==0){
+                ArrayList<ComparableCard> playerHand2 = new ArrayList<ComparableCard>();
+                playerHand2=playerHand;
+                if(game.getVictory(3)==1){
+                    playerHand = ComparableCard.exchange2Card(playerHand, game.getPlayerSelectIndex(0), game.getPlayerSelectIndex(1), Com1Hand.get(11), Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 11, 12, playerHand2.get(game.getPlayerSelectIndex(0)), playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
+                else if(game.getVictory(3)==2){
+                    playerHand = ComparableCard.exchange2Card(playerHand, game.getPlayerSelectIndex(0), game.getPlayerSelectIndex(1), Com2Hand.get(11), Com2Hand.get(12));
+                    Com1Hand = ComparableCard.exchange2Card(Com2Hand, 11, 12, playerHand2.get(game.getPlayerSelectIndex(0)), playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
+                else if(game.getVictory(3)==3){
+                    playerHand = ComparableCard.exchange2Card(playerHand, game.getPlayerSelectIndex(0), game.getPlayerSelectIndex(1), Com3Hand.get(11), Com3Hand.get(12));
+                    Com1Hand = ComparableCard.exchange2Card(Com3Hand, 11, 12, playerHand2.get(game.getPlayerSelectIndex(0)), playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
             }
-        }
-        catch (Exception ex) {
-            System.out.println("exchange");
+            else  if(game.getVictory(0)==1){
+                ArrayList<ComparableCard> Com1Hand2 = new ArrayList<ComparableCard>();
+                Com1Hand2=Com1Hand;
+                if(game.getVictory(3)==0){
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 0, 1, playerHand.get(11), playerHand.get(12));
+                    playerHand = ComparableCard.exchange2Card(playerHand, 11, 12, Com1Hand2.get(0), Com1Hand2.get(1));
+                }
+                else if(game.getVictory(3)==2){
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 0, 1, Com2Hand.get(11), Com2Hand.get(12));
+                    Com2Hand = ComparableCard.exchange2Card(Com2Hand, 11, 12, Com1Hand2.get(0), Com1Hand2.get(1));
+                }
+                else if(game.getVictory(3)==3){
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 0, 1, Com3Hand.get(11), Com3Hand.get(12));
+                    Com3Hand = ComparableCard.exchange2Card(Com3Hand, 11, 12, Com1Hand2.get(0), Com1Hand2.get(1));
+                }
+            }
+            else  if(game.getVictory(0)==2){
+                ArrayList<ComparableCard> Com2Hand2 = new ArrayList<ComparableCard>();
+                Com2Hand2=Com2Hand;
+                if(game.getVictory(3)==0){
+                    Com2Hand = ComparableCard.exchange2Card(Com2Hand, 0, 1, playerHand.get(11), playerHand.get(12));
+                    playerHand = ComparableCard.exchange2Card(playerHand, 11, 12, Com2Hand2.get(0), Com2Hand2.get(1));
+                }
+                else if(game.getVictory(3)==1){
+                    Com2Hand = ComparableCard.exchange2Card(Com2Hand, 0, 1, Com1Hand.get(11), Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 11, 12, Com2Hand2.get(0), Com2Hand2.get(1));
+                }
+                else if(game.getVictory(3)==3){
+                    Com2Hand = ComparableCard.exchange2Card(Com2Hand, 0, 1, Com3Hand.get(11), Com3Hand.get(12));
+                    Com3Hand = ComparableCard.exchange2Card(Com3Hand, 11, 12, Com2Hand2.get(0), Com2Hand2.get(1));
+                }
+            }
+            else  if(game.getVictory(0)==3){
+                ArrayList<ComparableCard> Com3Hand2 = new ArrayList<ComparableCard>();
+                Com3Hand2=Com3Hand;
+                if(game.getVictory(3)==0){
+                    Com3Hand = ComparableCard.exchange2Card(Com3Hand, 0, 1, playerHand.get(11), playerHand.get(12));
+                    playerHand = ComparableCard.exchange2Card(playerHand, 11, 12, Com3Hand2.get(0), Com3Hand2.get(1));
+                }
+                else if(game.getVictory(3)==1){
+                    Com3Hand = ComparableCard.exchange2Card(Com3Hand, 0, 1, Com1Hand.get(11), Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange2Card(Com1Hand, 11, 12, Com3Hand2.get(0), Com3Hand2.get(1));
+                }
+                else if(game.getVictory(3)==2){
+                    Com3Hand = ComparableCard.exchange2Card(Com3Hand, 0, 1, Com2Hand.get(11), Com2Hand.get(12));
+                    Com2Hand = ComparableCard.exchange2Card(Com2Hand, 11, 12, Com3Hand2.get(0), Com3Hand2.get(1));
+                }
+            }
+
+            if(game.getVictory(1)==0){
+                ArrayList<ComparableCard> playerHand2 = new ArrayList<ComparableCard>();
+                playerHand2=playerHand;
+                if(game.getVictory(2)==1){
+                    playerHand = ComparableCard.exchange1Card(playerHand, game.getPlayerSelectIndex(0), Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 12, playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
+                else if(game.getVictory(2)==2){
+                    playerHand = ComparableCard.exchange1Card(playerHand, game.getPlayerSelectIndex(0), Com2Hand.get(12));
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 12, playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
+                else if(game.getVictory(2)==3){
+                    playerHand = ComparableCard.exchange1Card(playerHand, game.getPlayerSelectIndex(0), Com3Hand.get(12));
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 12, playerHand2.get(game.getPlayerSelectIndex(0)));
+                }
+            }
+            else  if(game.getVictory(1)==1){
+                ArrayList<ComparableCard> Com1Hand2 = new ArrayList<ComparableCard>();
+                Com1Hand2 = Com1Hand;
+                if(game.getVictory(2)==0){
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 0, playerHand.get(12));
+                    playerHand = ComparableCard.exchange1Card(playerHand, 12, Com1Hand2.get(0));
+                }
+                else if(game.getVictory(2)==2){
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 0, Com2Hand.get(12));
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 12, Com1Hand2.get(0));
+                }
+                else if(game.getVictory(2)==3){
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 0, Com3Hand.get(12));
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 12, Com1Hand2.get(0));
+                }
+            }
+            else  if(game.getVictory(1)==2){
+                ArrayList<ComparableCard> Com2Hand2 = new ArrayList<ComparableCard>();
+                Com2Hand2 = Com2Hand;
+                if(game.getVictory(2)==0){
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 0, playerHand.get(12));
+                    playerHand = ComparableCard.exchange1Card(playerHand, 12, Com2Hand2.get(0));
+                }
+                else if(game.getVictory(2)==1){
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 0, Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 12, Com2Hand2.get(0));
+                }
+                else if(game.getVictory(2)==3){
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 0, Com3Hand.get(12));
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 12, Com2Hand2.get(0));
+                }
+            }
+            else  if(game.getVictory(1)==3){
+                ArrayList<ComparableCard> Com3Hand2 = new ArrayList<ComparableCard>();
+                Com3Hand2 = Com3Hand;
+                if(game.getVictory(2)==0){
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 0, playerHand.get(12));
+                    playerHand = ComparableCard.exchange1Card(playerHand, 12, Com3Hand2.get(0));
+                }
+                else if(game.getVictory(2)==1){
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 0, Com1Hand.get(12));
+                    Com1Hand = ComparableCard.exchange1Card(Com1Hand, 12, Com3Hand2.get(0));
+                }
+                else if(game.getVictory(2)==2){
+                    Com3Hand = ComparableCard.exchange1Card(Com3Hand, 0, Com2Hand.get(12));
+                    Com2Hand = ComparableCard.exchange1Card(Com2Hand, 12, Com3Hand2.get(0));
+                }
+            }
+            try {
             
-        }
-        
-        
+                paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
+                paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
+            }
+            catch (Exception ex) {
+                System.out.println("clear card select to Top Exchange");
+            }
+            try {
+                for(int loop=0;loop<13;loop++)
+                {
+                    paneList.get(loop).getChildren().clear();
+                    paneList.get(loop).getChildren().add(playerHand.get(loop).imageview);
+
+                }
+            }
+            catch (Exception ex) {
+                System.out.println("exchange");
+                
+            }
+            firstPlay();
+        } 
     }
     
    

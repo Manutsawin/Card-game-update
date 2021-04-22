@@ -251,7 +251,7 @@ public class ComparableCard extends Card implements CheckCardValue{
     }
 
 
-    public static ArrayList<ComparableCard> tabulateListCards(ArrayList<ComparableCard> list,int index1,int index2,ComparableCard card1,ComparableCard card2){
+    public static ArrayList<ComparableCard> exchange2Card(ArrayList<ComparableCard> list,int index1,int index2,ComparableCard card1,ComparableCard card2){
         ArrayList<ComparableCard> listNew = new ArrayList<ComparableCard>();
         for(int loop=0;loop<13;loop++){
             if(loop!=index1&&loop!=index2){
@@ -259,7 +259,6 @@ public class ComparableCard extends Card implements CheckCardValue{
             }
             
         }
-        System.out.println("listnew : "+listNew.size());
         for(int loop=0;loop<11;loop++){
             if(card1.checkValue1(listNew.get(loop))==-1||loop==10){
                 listNew.add(list.get(loop));
@@ -293,6 +292,35 @@ public class ComparableCard extends Card implements CheckCardValue{
                 break;
             }
         }
+        return listNew;
+    } 
+    
+    
+    public static ArrayList<ComparableCard> exchange1Card(ArrayList<ComparableCard> list,int index ,ComparableCard card){
+        ArrayList<ComparableCard> listNew = new ArrayList<ComparableCard>();
+        for(int loop=0;loop<13;loop++){
+            if(loop!=index){
+                listNew.add(list.get(loop));
+            }
+            
+        }
+        for(int loop=0;loop<12;loop++){
+            if(card.checkValue1(listNew.get(loop))==-1||loop==11){
+                listNew.add(list.get(loop));
+                for(int loop2=11;loop2>=loop;loop2--){
+                    listNew.set(loop2+1,listNew.get(loop2));
+                }
+                if(loop==11){
+                    listNew.set(loop+1,card);
+                }
+                else{
+                    listNew.set(loop,card);
+                }
+                
+                break;
+            }
+        }
+        listNew.add(list.get(0));
         return listNew;
     }  
     
