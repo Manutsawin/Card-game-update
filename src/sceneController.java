@@ -29,6 +29,7 @@ public class sceneController {
     private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands2 = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands3 = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewSt = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewStatus = new ArrayList<javafx.scene.image.ImageView>();
    
     private GameSesstion game = new GameSesstion();
 
@@ -57,12 +58,15 @@ public class sceneController {
 
     @FXML
     private ArrayList<Pane> cardOnHandsList ;
+    
+    @FXML
+    private ArrayList<Pane> statusList;
 
     @FXML
     private Button skip;
 
     @FXML
-    private Button next;
+    private Button next; 
     
     @FXML
     private Button exBT;
@@ -132,6 +136,7 @@ public class sceneController {
             imageviewNumberHands2 = SetpicMainPages.setpicNumberHands();
             imageviewNumberHands3 = SetpicMainPages.setpicNumberHands();
             imageviewSt = SetpicMainPages.setpicSt();
+            imageviewStatus = SetpicMainPages.setpicStatus();
 
             picStange.getChildren().add(imageviewSt.get(0));
     
@@ -521,6 +526,7 @@ public class sceneController {
                 paneList.get(1).getChildren().clear();
                 playerHand.get(1).setStatus(false);
                 game.decreasePlayerhand(2);
+                game.setStageGame(1);
                 CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(index[0]).getImageview());
                 CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(index[1]).getImageview());
                 CardsOnField=playerHand.get(index[1]);
@@ -533,6 +539,7 @@ public class sceneController {
                 paneList.get(2).getChildren().clear();
                 playerHand.get(2).setStatus(false);
                 game.decreasePlayerhand(3);
+                game.setStageGame(2);
                 CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(index[0]).getImageview());
                 CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(index[1]).getImageview());
                 CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(index[2]).getImageview());
@@ -1099,6 +1106,9 @@ public class sceneController {
     }
 
     private void nextRound() throws IOException{
+        
+        
+
         if(roundGame==1){
             System.out.println("End Game");
             gotoEndScene();
@@ -1108,6 +1118,17 @@ public class sceneController {
         victory[1]=game.getVictory(1);
         victory[2]=game.getVictory(2);
         victory[3]=game.getVictory(3);
+        
+        
+        try {
+            for(int loop=0;loop<4;loop++){
+                statusList.get(game.getVictory(loop)).getChildren().add(imageviewStatus.get(loop));
+            }
+        }
+        catch (Exception ex) {
+            System.out.println("status in  nextRound");
+        }
+        
  
         RandomHand rand = new RandomHand();
         this.playerHand = rand.getPlayerHand();

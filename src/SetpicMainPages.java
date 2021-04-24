@@ -154,4 +154,55 @@ public class SetpicMainPages {
         return imageview;
     }
 
+    public static ArrayList<javafx.scene.image.ImageView> setIcon(){
+       
+        ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/player.jpg"));
+        imageview.get(0).setFitWidth(100);
+        imageview.get(0).setFitHeight(100);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot1.jpg"));
+        imageview.get(1).setFitWidth(100);
+        imageview.get(1).setFitHeight(100);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot2.jpg"));
+        imageview.get(2).setFitWidth(100);
+        imageview.get(2).setFitHeight(100);
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot3.jpg"));
+        imageview.get(3).setFitWidth(100);
+        imageview.get(3).setFitHeight(100);
+        return imageview;
+    }
+
+    public static javafx.scene.image.ImageView setpicBgEndGame(){
+        javafx.scene.image.ImageView imageview = new javafx.scene.image.ImageView();  
+        imageview = new javafx.scene.image.ImageView("file:pic/bg/endGame.png");
+        imageview.setFitWidth(1100);
+        imageview.setFitHeight(720);
+        return imageview;
+    }
+
+    public static ArrayList<javafx.scene.image.ImageView> setpicStatus(){
+       
+        ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/status/1.jpg"));
+        imageview.get(0).setFitWidth(50);
+        imageview.get(0).setFitHeight(50);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/status/2.jpg"));
+        imageview.get(1).setFitWidth(50);
+        imageview.get(1).setFitHeight(50);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/status/3.png"));
+        imageview.get(2).setFitWidth(50);
+        imageview.get(2).setFitHeight(50);
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/status/4.jpg"));
+        imageview.get(3).setFitWidth(50);
+        imageview.get(3).setFitHeight(50);
+        return imageview;
+    }
 }
