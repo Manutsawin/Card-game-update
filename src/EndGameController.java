@@ -45,8 +45,6 @@ public class EndGameController {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("MenuScene.fxml"));
         Scene menuScene = new Scene(menuParent);
-
-
         Stage window =  (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(menuScene);
         window.setTitle("Slave Menu");

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+import javafx.scene.Node;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -87,6 +87,10 @@ public class sceneController {
  
     @FXML
     private Button enter;
+
+    @FXML
+    private Button toMenu;
+    
 
   
     @FXML
@@ -1356,4 +1360,14 @@ public class sceneController {
         window.show();
     }
 
+    @FXML
+    void gotoMenuButtonAction(ActionEvent event) throws IOException {
+
+        Parent menuParent = FXMLLoader.load(getClass().getResource("MenuScene.fxml"));
+        Scene menuScene = new Scene(menuParent);
+        Stage window =  (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(menuScene);
+        window.setTitle("Slave Menu");
+        window.show();
+    }
 }
