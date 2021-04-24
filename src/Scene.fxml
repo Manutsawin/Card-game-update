@@ -184,16 +184,18 @@
             
          </children>
       </HBox>
-      <Button fx:id="enter" layoutX="959.0" layoutY="36.0" mnemonicParsing="false" onAction="#playerEnterCard" text="ลงการ์ด" />
-      <Button fx:id="skip" layoutX="959.0" layoutY="96.0" mnemonicParsing="false" onAction="#playerSkip" text="ข้าม" />
-      <Button fx:id="next" layoutX="959.0" layoutY="200.0" mnemonicParsing="false" onAction="#next" text="ถัดไป" />
-      
+      <Button fx:id="enter" layoutX="959.0" layoutY="330.0" mnemonicParsing="false" onAction="#playerEnterCard" text="ลงการ์ด" />
+
+      <Button fx:id="enter" layoutX="959.0" layoutY="330.0" mnemonicParsing="false" onAction="#playerEnterCard" text="ลงการ์ด" />
+      <Button fx:id="skip" layoutX="959.0" layoutY="380.0" mnemonicParsing="false" onAction="#playerSkip" text="ข้าม" />
+      <Button fx:id="next" layoutX="959.0" layoutY="430.0" mnemonicParsing="false" onAction="#next" text="ถัดไป" />
+      <Button fx:id="exBT" layoutX="959.0" layoutY="480.0" mnemonicParsing="false" onAction="#exchange" text="สลับการ์ด" />
       
       <Pane fx:id="cardOnHands0" layoutX="475.0" layoutY="470.0" prefHeight="70.0" prefWidth="70.0" />
       <Pane fx:id="cardOnHands1" layoutX="27.0" layoutY="235.0" prefHeight="70.0" prefWidth="70.0" />
       <Pane fx:id="cardOnHands2" layoutX="404.0" layoutY="26.0" prefHeight="70.0" prefWidth="70.0" />
       <Pane fx:id="cardOnHands3" layoutX="942.0" layoutY="235.0" prefHeight="70.0" prefWidth="70.0" />
-      <Button fx:id="exBT" layoutX="1022.0" layoutY="206.0" mnemonicParsing="false" onAction="#exchange" text="สลับการ์ด" />
+      
 
       <fx:define>
             <ArrayList fx:id="cardOnHandsList">

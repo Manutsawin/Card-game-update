@@ -1327,10 +1327,10 @@ public class sceneController {
     @FXML
     void gotoEndScene() throws IOException {
         
-        Parent gameParent = FXMLLoader.load(getClass().getResource("EndGame.fxml"));
-        Scene gameScene = new Scene(gameParent);
+        Parent EndParent = FXMLLoader.load(getClass().getResource("EndGame.fxml"));
+        Scene EndScene = new Scene(EndParent);
         Stage window =  (Stage)next.getScene().getWindow();
-        window.setScene(gameScene);
+        window.setScene(EndScene);
         window.setTitle("End");
         window.show();
     }
