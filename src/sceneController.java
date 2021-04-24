@@ -9,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -1352,6 +1355,7 @@ public class sceneController {
     @FXML
     void gotoEndScene() throws IOException {
         
+        saveFile ();
         Parent EndParent = FXMLLoader.load(getClass().getResource("EndGame.fxml"));
         Scene EndScene = new Scene(EndParent);
         Stage window =  (Stage)next.getScene().getWindow();
@@ -1369,5 +1373,23 @@ public class sceneController {
         window.setScene(menuScene);
         window.setTitle("Slave Menu");
         window.show();
+    }
+
+    private void saveFile () {
+        try( DataOutputStream file = new DataOutputStream(new FileOutputStream("src/order.dat"))) {
+            
+            file.flush();
+            file.writeInt(game.getVictory(0));
+            file.writeInt(game.getVictory(1));
+            file.writeInt(game.getVictory(2));
+            file.writeInt(game.getVictory(3));
+            // file.writeUTF(tfNumberOfYears.getText());
+            // file.writeUTF(tfLoanAmount.getText());
+        
+        } catch (Exception ex) {
+            
+            ex.printStackTrace();
+        }
+        
     }
 }

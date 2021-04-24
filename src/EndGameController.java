@@ -1,3 +1,5 @@
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,7 +56,19 @@ public class EndGameController {
     @FXML
     void initialize() {
         bg.getChildren().add(SetpicMainPages.setpicBgEndGame());
-        int []index = {0,1,2,3} ; 
+        int []index = {0,0,0,0} ; 
+        try ( DataInputStream file = new DataInputStream(new FileInputStream("src/order.dat"))){
+            index[0]=file.readInt();
+            index[1]=file.readInt();
+            index[2]=file.readInt();
+            index[3]=file.readInt();
+            
+        } catch (Exception ex) {
+            
+            ex.printStackTrace();
+        }
+       
+        
         imageviewIcon = SetpicMainPages.setIcon();
         if(index[0]==0){
             s1.getChildren().add(imageviewIcon.get(0));
