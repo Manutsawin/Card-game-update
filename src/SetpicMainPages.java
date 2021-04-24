@@ -124,4 +124,34 @@ public class SetpicMainPages {
         return imageview;
     }
 
+    public static javafx.scene.image.ImageView setpicStartGame(){
+        javafx.scene.image.ImageView imageview = new javafx.scene.image.ImageView();  
+        imageview = new javafx.scene.image.ImageView("file:pic/numbers/13.png");
+        imageview.setFitWidth(70);
+        imageview.setFitHeight(70);
+        return imageview;
+    }
+
+    public static ArrayList<javafx.scene.image.ImageView> setpicSt(){
+       
+        ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/S/1.png"));
+        imageview.get(0).setFitWidth(50);
+        imageview.get(0).setFitHeight(50);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/S/2.png"));
+        imageview.get(1).setFitWidth(50);
+        imageview.get(1).setFitHeight(50);
+        
+        imageview.add(new javafx.scene.image.ImageView("file:pic/S/3.png"));
+        imageview.get(2).setFitWidth(50);
+        imageview.get(2).setFitHeight(50);
+
+        imageview.add(new javafx.scene.image.ImageView("file:pic/S/4.png"));
+        imageview.get(3).setFitWidth(50);
+        imageview.get(3).setFitHeight(50);
+        return imageview;
+    }
+
 }
