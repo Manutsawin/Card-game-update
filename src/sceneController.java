@@ -33,6 +33,7 @@ public class sceneController {
     private ArrayList<javafx.scene.image.ImageView> imageviewNumberHands3 = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewSt = new ArrayList<javafx.scene.image.ImageView>();
     private ArrayList<javafx.scene.image.ImageView> imageviewStatus = new ArrayList<javafx.scene.image.ImageView>();
+    private ArrayList<javafx.scene.image.ImageView> imageviewStatusStart = new ArrayList<javafx.scene.image.ImageView>();
    
     private GameSesstion game = new GameSesstion();
 
@@ -94,7 +95,8 @@ public class sceneController {
     @FXML
     private Button toMenu;
     
-
+    @FXML
+    private Pane bg;
   
     @FXML
     private Pane picStange;
@@ -109,6 +111,7 @@ public class sceneController {
     
     @FXML
     void initialize() {
+        bg.getChildren().add(SetpicMainPages.setpicBgGame());
         setUp();
     }
 
@@ -144,6 +147,12 @@ public class sceneController {
             imageviewNumberHands3 = SetpicMainPages.setpicNumberHands();
             imageviewSt = SetpicMainPages.setpicSt();
             imageviewStatus = SetpicMainPages.setpicStatus();
+            imageviewStatusStart = SetpicMainPages.setpicStatusStart();
+
+            statusList.get(0).getChildren().add(imageviewStatusStart.get(0));
+            statusList.get(1).getChildren().add(imageviewStatusStart.get(1));
+            statusList.get(2).getChildren().add(imageviewStatusStart.get(2));
+            statusList.get(3).getChildren().add(imageviewStatusStart.get(3));
 
             picStange.getChildren().add(imageviewSt.get(0));
     
