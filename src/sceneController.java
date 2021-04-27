@@ -543,6 +543,7 @@ public class sceneController {
                 playerHand.get(1).setStatus(false);
                 game.decreasePlayerhand(2);
                 game.setStageGame(1);
+                game.setSelectStage(1);
                 CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(index[0]).getImageview());
                 CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(index[1]).getImageview());
                 CardsOnField=playerHand.get(index[1]);
@@ -556,6 +557,7 @@ public class sceneController {
                 playerHand.get(2).setStatus(false);
                 game.decreasePlayerhand(3);
                 game.setStageGame(2);
+                game.setSelectStage(2);
                 CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(index[0]).getImageview());
                 CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(index[1]).getImageview());
                 CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(index[2]).getImageview());
