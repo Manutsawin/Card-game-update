@@ -409,88 +409,93 @@ public class sceneController {
             
         }
         else if(game.getTurn()==0){
-            game.setStageGame(game.getSelectStage());
 
-            if(game.getStageGame()==0){
-                paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
-                CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
-                CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
-                playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);
-                game.decreasePlayerhand(1);
-            }
-            else if(game.getStageGame()==1){
-                paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
-                CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
-                CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
-                if(playerHand.get(game.getPlayerSelectIndex(0)).checkValue1(playerHand.get(game.getPlayerSelectIndex(0)))==1){
+            if(game.getSelectCards()==game.getLimitSelectCards()){
+                
+                game.setStageGame(game.getSelectStage());
+                if(game.getStageGame()==0){
+                    paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
+                    CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
                     CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
+                    playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);
+                    game.decreasePlayerhand(1);
                 }
-                else{
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
+                else if(game.getStageGame()==1){
+                    paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
+                    CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
+                    CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
+                    if(playerHand.get(game.getPlayerSelectIndex(0)).checkValue1(playerHand.get(game.getPlayerSelectIndex(0)))==1){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
+                    }
+                    else{
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
+                    }
+                    playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
+                    playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false);  
+                    game.decreasePlayerhand(2);
                 }
-                playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
-                playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false);  
-                game.decreasePlayerhand(2);
+                else if(game.getStageGame()==2){
+                    paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(2)).getChildren().clear();
+    
+                    System.out.println(game.getPlayerSelectIndex(0));
+                    System.out.println(game.getPlayerSelectIndex(1));
+                    System.out.println(game.getPlayerSelectIndex(2));
+    
+                    CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
+                    CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
+                    CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(game.getPlayerSelectIndex(2)).imageview);
+                    if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==1){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
+                    }
+                    else if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==2){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
+                    }
+                    else if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==3){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(2));
+                    }
+                    playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
+                    playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false); 
+                    playerHand.get(game.getPlayerSelectIndex(2)).setStatus(false);
+                    game.decreasePlayerhand(3);   
+                
+                }
+                else if(game.getStageGame()==3){
+                    paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(2)).getChildren().clear();
+                    paneTopList.get(game.getPlayerSelectIndex(3)).getChildren().clear();
+                    CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
+                    CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
+                    CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(game.getPlayerSelectIndex(2)).imageview);
+                    CardOnFieldPlayerList.get(3).getChildren().add(playerHand.get(game.getPlayerSelectIndex(3)).imageview);
+                    if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==1){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
+                    }
+                    else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==2){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
+                    }
+                    else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==3){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(2));
+                    }
+                    else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==4){
+                        CardsOnField = playerHand.get(game.getPlayerSelectIndex(3));
+                    }
+                    playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
+                    playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false); 
+                    playerHand.get(game.getPlayerSelectIndex(2)).setStatus(false);
+                    playerHand.get(game.getPlayerSelectIndex(3)).setStatus(false);
+                    game.decreasePlayerhand(4);   
+    
+                }
+                game.setSelectCards(0);
+                fethButton(); 
+                endTurn();
             }
-            else if(game.getStageGame()==2){
-                paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(2)).getChildren().clear();
 
-                System.out.println(game.getPlayerSelectIndex(0));
-                System.out.println(game.getPlayerSelectIndex(1));
-                System.out.println(game.getPlayerSelectIndex(2));
-
-                CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
-                CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
-                CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(game.getPlayerSelectIndex(2)).imageview);
-                if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==1){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
-                }
-                else if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==2){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
-                }
-                else if(ComparableCard.findMaxSuit3(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)))==3){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(2));
-                }
-                playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
-                playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false); 
-                playerHand.get(game.getPlayerSelectIndex(2)).setStatus(false);
-                game.decreasePlayerhand(3);   
-            
-            }
-            else if(game.getStageGame()==3){
-                paneTopList.get(game.getPlayerSelectIndex(0)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(1)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(2)).getChildren().clear();
-                paneTopList.get(game.getPlayerSelectIndex(3)).getChildren().clear();
-                CardOnFieldPlayerList.get(0).getChildren().add(playerHand.get(game.getPlayerSelectIndex(0)).imageview);
-                CardOnFieldPlayerList.get(1).getChildren().add(playerHand.get(game.getPlayerSelectIndex(1)).imageview);
-                CardOnFieldPlayerList.get(2).getChildren().add(playerHand.get(game.getPlayerSelectIndex(2)).imageview);
-                CardOnFieldPlayerList.get(3).getChildren().add(playerHand.get(game.getPlayerSelectIndex(3)).imageview);
-                if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==1){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(0));
-                }
-                else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==2){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(1));
-                }
-                else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==3){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(2));
-                }
-                else if(ComparableCard.findMaxSuit4(playerHand.get(game.getPlayerSelectIndex(0)), playerHand.get(game.getPlayerSelectIndex(1)), playerHand.get(game.getPlayerSelectIndex(2)),playerHand.get(game.getPlayerSelectIndex(3)))==4){
-                    CardsOnField = playerHand.get(game.getPlayerSelectIndex(3));
-                }
-                playerHand.get(game.getPlayerSelectIndex(0)).setStatus(false);  
-                playerHand.get(game.getPlayerSelectIndex(1)).setStatus(false); 
-                playerHand.get(game.getPlayerSelectIndex(2)).setStatus(false);
-                playerHand.get(game.getPlayerSelectIndex(3)).setStatus(false);
-                game.decreasePlayerhand(4);   
-
-            }
-            game.setSelectCards(0);
-            fethButton(); 
-            endTurn();
+           
         }
     }
 
