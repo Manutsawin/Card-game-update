@@ -797,7 +797,10 @@ public class sceneController {
 
     @FXML
     private void playerSkip() throws IOException{
-        if(game.getTurn()==0){
+        if(game.getExchangeCards()){
+            
+        }
+        else if(game.getTurn()==0){
             game.plusSkip(1);
             System.out.println("skip : "+game.getSkip());
             game.setPlayerCanPlay(false);
@@ -821,7 +824,6 @@ public class sceneController {
                 CardOnFieldComthreeList.get(loop).getChildren().clear();
             }
             game.setStartStage(true);
-            game.setSkip(0);
         }
         
         indexCom1 = Bot.botCalculate(Com1Hand,CardsOnField, game);

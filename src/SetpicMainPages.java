@@ -158,19 +158,19 @@ public class SetpicMainPages {
        
         ArrayList<javafx.scene.image.ImageView> imageview = new ArrayList<javafx.scene.image.ImageView>();  
 
-        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/player.jpg"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/player.png"));
         imageview.get(0).setFitWidth(100);
         imageview.get(0).setFitHeight(100);
         
-        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot1.jpg"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot1.png"));
         imageview.get(1).setFitWidth(100);
         imageview.get(1).setFitHeight(100);
         
-        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot2.jpg"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot2.png"));
         imageview.get(2).setFitWidth(100);
         imageview.get(2).setFitHeight(100);
 
-        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot3.jpg"));
+        imageview.add(new javafx.scene.image.ImageView("file:pic/icon/bot3.png"));
         imageview.get(3).setFitWidth(100);
         imageview.get(3).setFitHeight(100);
         return imageview;
