@@ -187,7 +187,7 @@
       <Button fx:id="exBT" layoutX="959.0" layoutY="480.0" mnemonicParsing="false" onAction="#exchange" text="สลับการ์ด" />
       
       <Pane fx:id="cardOnHands0" layoutX="905.0" layoutY="650.0" prefHeight="45.0" prefWidth="45.0" />
-      <Pane fx:id="cardOnHands1" layoutX="125.0" layoutY="302.0" prefHeight="45.0" prefWidth="45.0" />
+      <Pane fx:id="cardOnHands1" layoutX="125.0" layoutY="287.0" prefHeight="45.0" prefWidth="45.0" />
       <Pane fx:id="cardOnHands2" layoutX="605.0" layoutY="82.0" prefHeight="45.0" prefWidth="45.0" />
       <Pane fx:id="cardOnHands3" layoutX="894.0" layoutY="287.0" prefHeight="45.0" prefWidth="45.0" />
       
@@ -215,7 +215,7 @@
                <fx:reference source="status4" />
             </ArrayList>
       </fx:define>
-      <Pane fx:id="picStange" layoutX="15.0" layoutY="1.0" prefHeight="50.0" prefWidth="50" />
+      <Pane fx:id="picStange" layoutX="19" layoutY="12" prefHeight="50.0" prefWidth="50" />
       <Pane fx:id="turnPlayer" layoutX="975.0" layoutY="630.0" prefHeight="45.0" prefWidth="45.0" rotate="90.0" />
       <Pane fx:id="turnBot1" layoutX="104.0" layoutY="259.0" prefHeight="45.0" prefWidth="45.0" rotate="180" />
       <Pane fx:id="turnBot2" layoutX="518.0" layoutY="82.0" prefHeight="45.0" prefWidth="45.0" rotate="270" />

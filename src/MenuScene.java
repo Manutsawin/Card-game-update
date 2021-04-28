@@ -62,6 +62,7 @@ public class MenuScene {
         Parent gameParent = FXMLLoader.load(getClass().getResource("Scene.fxml"));
         Scene gameScene = new Scene(gameParent);
         Stage window =  (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setResizable(false);
         window.setScene(gameScene);
         window.setTitle("Slave");
         window.show();
